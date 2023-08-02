@@ -62,9 +62,10 @@ void usage(int extended=0)
 	printf("                               (1=short, individual card titles)\n");
 	printf("                               (2=long, no individual titles (default))\n");
 	printf("                               (3=long, individual card titles)\n");
+	printf("  -mb                Use if compiling the Pokemon multiboot cards\n");
 	printf("  -bin               Output bin files             At least one\n");
 	printf("  -raw               Output raw files             of these options\n");
-	printf("  -bin               Output bmp files             is required\n");
+	printf("  -bmp               Output bmp files             is required\n");
 	printf("  -music <value>     music (0=Normal 1=cheery)   (default = normal)\n");
 	printf("  -help (or -?)      Print extended usage info\n");
 
@@ -445,6 +446,11 @@ int main(int argc, char* argv[])
 		{
 			i++;
 			filename=i;
+			continue;
+		}
+		if (!_stricmp(argv[i], "-mb"))
+		{
+			cardheader[0] = 0xF0;
 			continue;
 		}
 		if(!strcasecmp(argv[i],"-bin"))
